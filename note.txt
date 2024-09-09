@@ -4,3 +4,6 @@ npm init react-app .
 
 ##개발모드 실행
 npm run start
+
+
+##테스트..
