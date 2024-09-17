@@ -1,4 +1,7 @@
 import ReactDOM from 'react-dom/client';
+import React, { Fragment } from "react";
+
+
 /*
 const ReactDOM = require('react-dom')
 위와같은 형태로도 쓸 수는 있으나, require함수의 경우 javascript표준이 아닌 
@@ -17,5 +20,14 @@ ReactDOM.render 대신에 ReactDOM.createRoot를 사용하는 코드가 만들�
 그런 경우에는 코드를 아래처럼 수정하시면 됩니다.
 */
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<h1>안녕 리액트!</h1>);
+root.render(
+  <>
+    <p>안녕</p>
+    <p>리액트!</p>
+  </>
+);
 // JSX: javascript XML의 줄임말. React 엘리먼트를 생성. js와는 다른 문법.
+/* 
+플래그먼트(Fragment). render되는 HTML의 가장 상위 태그는 무조건 1개의 태그로 이루어져있어야 함.
+이때 기존 구조는 손대지 않고 사용할 수 있는 태그 <Flagment></Flagment>. <></>도 동일한 의미.
+*/
