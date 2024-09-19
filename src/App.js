@@ -1,11 +1,10 @@
 import Dice from './Dice'
 
 function App() {
-  // return 대상을 소괄호()로 감싸주면 여러줄로 나누어 작성 가능
-  // -> 좀더 가독성 있게 작업 가능
+  // 숫자의 경우 중괄호로 감싸서 바로 사용 가능!
   return (
     <div>
-      <Dice />
+      <Dice color="red" num={2} />
     </div>
   );
 }
