@@ -1,4 +1,4 @@
-import Dice from './Dice'
+import Dice from '../Dice'
 
 function App() {
   // 숫자의 경우 중괄호로 감싸서 바로 사용 가능!

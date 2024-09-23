@@ -1,4 +1,4 @@
-import Dice from './Dice'
+import Dice from '../Dice'
 
 function App() {
   // return 대상을 소괄호()로 감싸주면 여러줄로 나누어 작성 가능
