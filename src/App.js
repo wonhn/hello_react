@@ -1,25 +1,36 @@
-import { useState } from 'react'  // state를 사용하고 싶을때
+import { useState } from 'react'
 import Button from './Button';
 import Dice from './Dice'
 
-// 1~n까지의 렌덤한 숫자를 반환하는 함수
 function random(n) {
   return Math.ceil(Math.random() * n)
 }
 
 function App() {
-  /* 
-  state : react의 변수같은 개념으로, state를 바꾸면 리액트가 알아서 화면을 새로 렌더링 해준다.
-  useState 함수의 경우 배열의 형태로 요소 두개를 리턴해줘서, 배열의 Destructuring문법으로 코드를 작성해주는 편
-  이중 첫번째 요소는 state값. 변수 값. 두번째 요소는 setter함수. 값을 변경할때는 반드시 setter를 사용해야함
-  */
   const [num, setNum] = useState(1)
+  const [sum, setSum] = useState(0);
+  const [gameHistory, setGameHistory] = useState([]);
 
   const handleRollClick = () => {
-    setNum(random(6));
+    const nextNum = random(6);
+    setNum(nextNum);
+    setSum(sum + nextNum);
+    /*
+    gameHistory.push(nextNum)
+    setGameHistory(gameHistory)
+
+    참조형 변수의 경우 변수값을 담고있는 영역의 주소값을 가지고 있기 때문에
+    기존 state에 배열 인자만 추가해줄 경우, 동일한 주소값을 가지고 있기 때문에
+    state입장에서는 상태값이 바뀌지 않았다고 받아들여 화면이 reload가 되지 않음!
+    
+    따라서 아래와 같이 배열을 새로 만들어줘야함
+    */
+    setGameHistory([...gameHistory, nextNum]);
   }
   const handleClearClick = () => {
     setNum(1);
+    setSum(0);
+    setGameHistory([]);
   }
 
   return (
@@ -28,7 +39,14 @@ function App() {
         <Button onClick={handleRollClick}>던지기</Button>
         <Button onClick={handleClearClick}>처음부터</Button>
       </div>
-      <Dice color="red" num={num} />
+      <div>
+        <h2>나</h2>
+        <Dice color='blue' num={num} />
+        <h2>총점</h2>
+        <p>{sum}</p>
+        <h2>기록</h2>
+        {gameHistory.join(', ')}
+      </div>
     </div>
   );
 }
